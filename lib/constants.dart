@@ -20,3 +20,25 @@ const kRight = 'assets/icons/rightarrow.svg';
 const kMenu = 'assets/icons/menu.svg';
 const kProfile = 'assets/icons/profile.svg';
 const kCalc = 'assets/icons/calculator.svg';
+const kLongRight = 'assets/icons/longright.svg';
+const kLongLeft = 'assets/icons/longleft.svg';
+const kCalculate = 'assets/icons/calculate.svg';
+
+//next animation
+Route next(Widget widg) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => widg,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1, 0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
