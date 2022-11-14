@@ -34,7 +34,45 @@ class _cccBody extends State<cccBody> {
               height: 150,
               width: 300,
               decoration: const BoxDecoration(
-                  color: kGreen,
+                  border: Border(
+                    top: BorderSide(color: kGreen, width: 6),
+                    left: BorderSide(color: kGreen, width: 6),
+                    right: BorderSide(color: kGreen, width: 6),
+                    bottom: BorderSide(color: kGreen, width: 6),
+                  ),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20))
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    kCalculate,
+                    height: 100,
+                  ),
+                  Container(width: 10),
+                  const Text(
+                    'Calculator',
+                    style: TextStyle(
+                        fontFamily: kFont, fontSize: 22, color: kGreen),
+                  )
+                ],
+              ),
+            )),
+        Container(height: 50),
+        GestureDetector(
+            onTap: () {},
+            child: Container(
+              height: 150,
+              width: 300,
+              decoration: const BoxDecoration(
+                  border: Border(
+                    top: BorderSide(color: kGreen, width: 6),
+                    left: BorderSide(color: kGreen, width: 6),
+                    right: BorderSide(color: kGreen, width: 6),
+                    bottom: BorderSide(color: kGreen, width: 6),
+                  ),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
                       bottomLeft: Radius.circular(20))),
@@ -42,19 +80,18 @@ class _cccBody extends State<cccBody> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(
-                    kCalc,
+                    kReport,
                     height: 100,
-                    color: kWhite,
                   ),
                   Container(width: 10),
                   const Text(
-                    'New Calculation',
+                    'Reports',
                     style: TextStyle(
-                        fontFamily: kFont, fontSize: 22, color: kWhite),
+                        fontFamily: kFont, fontSize: 22, color: kGreen),
                   )
                 ],
               ),
-            ))
+            )),
       ],
     );
   }
