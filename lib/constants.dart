@@ -25,6 +25,9 @@ const kReport = 'assets/icons/reports.svg';
 const kLongRight = 'assets/icons/longright.svg';
 const kLongLeft = 'assets/icons/longleft.svg';
 const kCalculate = 'assets/icons/calculate.svg';
+const kGear = 'assets/icons/gears.svg';
+const kQuestion = 'assets/icons/questionmark.svg';
+
 
 //next animation
 Route next(Widget widg) {

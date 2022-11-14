@@ -10,16 +10,27 @@ class cccScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100),
-          child: Container(
-              height: 100,
+          preferredSize: Size.fromHeight(120),
+          child:
+          Stack(
+            children: [
+              Positioned(
+              left: 310,
+              top: 20,
+              child: SvgPicture.asset(
+                kGear,
+              ),
+          ),
+          Container(
+              height: 120,
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Container(
+                    child:
+                    Container(
                       height: 30,
                       width: 120,
                       decoration: const BoxDecoration(
@@ -31,8 +42,10 @@ class cccScreen extends StatelessWidget {
                               color: kWhite, height: 90)),
                     ),
                   )
-                ],
-              ))),
+                ])
+          ),
+          ],
+          )),
       body: cccBody(),
     );
   }
