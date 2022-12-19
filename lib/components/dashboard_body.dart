@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gazelle_flutter/constants.dart';
+import 'package:gazelle_flutter/screens/FileWriter.dart';
 import 'package:gazelle_flutter/screens/ccc_screen.dart';
 
 class DashBody extends StatefulWidget {
@@ -32,8 +33,16 @@ class _DashBody extends State<DashBody> {
           ),
         ),
         Container(height: 20),
-        DashObject(
-            name: 'Land Management', desc: 'Effectively manage your land'),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FileWriter()),
+            );
+          },
+          child: DashObject(
+              name: 'Land Management', desc: 'Effectively manage your land'),
+        ),
         Container(height: 20),
         DashObject(
             name: 'Livestock Managment',

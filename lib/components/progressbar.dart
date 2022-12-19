@@ -13,12 +13,14 @@ class _ProgressBar extends State<ProgressBar> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      height: 50,
-      width: size.width,
-      child: Text(
-        'Progress Bar',
-        style: TextStyle(color: kDarkGreen, fontFamily: kFont, fontSize: 20),
-      ),
-    );
+        height: 80,
+        width: size.width,
+        child: Center(
+          child: Text(
+            'Progress Bar',
+            style:
+                TextStyle(color: kDarkGreen, fontFamily: kFont, fontSize: 20),
+          ),
+        ));
   }
 }

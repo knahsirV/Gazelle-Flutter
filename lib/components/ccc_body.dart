@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gazelle_flutter/constants.dart';
+import 'package:gazelle_flutter/screens/grass_input.dart';
 
 class cccBody extends StatefulWidget {
   cccBody({Key? key});
@@ -29,21 +30,20 @@ class _cccBody extends State<cccBody> {
         ),
         Container(height: 50),
         GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Grass_Input()),
+              );
+            },
             child: Container(
               height: 150,
               width: 300,
-              decoration: const BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: kGreen, width: 6),
-                    left: BorderSide(color: kGreen, width: 6),
-                    right: BorderSide(color: kGreen, width: 6),
-                    bottom: BorderSide(color: kGreen, width: 6),
-                  ),
-                  borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                  border: Border.all(width: 6, color: kGreen),
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20))
-              ),
+                      bottomLeft: Radius.circular(20))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -66,14 +66,9 @@ class _cccBody extends State<cccBody> {
             child: Container(
               height: 150,
               width: 300,
-              decoration: const BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: kGreen, width: 6),
-                    left: BorderSide(color: kGreen, width: 6),
-                    right: BorderSide(color: kGreen, width: 6),
-                    bottom: BorderSide(color: kGreen, width: 6),
-                  ),
-                  borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                  border: Border.all(width: 6, color: kGreen),
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
                       bottomLeft: Radius.circular(20))),
               child: Row(
@@ -92,13 +87,12 @@ class _cccBody extends State<cccBody> {
                 ],
               ),
             )),
-        Container(height: 230),
+        const Spacer(),
         GestureDetector(
           onTap: () {},
-          child:
-            SvgPicture.asset(
+          child: SvgPicture.asset(
             kQuestion,
-            ),
+          ),
         )
       ],
     );

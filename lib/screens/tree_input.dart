@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gazelle_flutter/components/progressbar.dart';
 import 'package:gazelle_flutter/constants.dart';
-import 'package:gazelle_flutter/screens/tree_input.dart';
 
-class Grass_Input extends StatefulWidget {
-  Grass_Input({Key? key});
+class Tree_Input extends StatefulWidget {
+  Tree_Input({Key? key});
   @override
-  State<Grass_Input> createState() => _Grass_Input();
+  State<Tree_Input> createState() => _Tree_Input();
 }
 
-class _Grass_Input extends State<Grass_Input> {
-  _Grass_Input({Key? key});
+class _Tree_Input extends State<Tree_Input> {
+  _Tree_Input({Key? key});
   var section1 = TextEditingController();
   var section2 = TextEditingController();
   var section3 = TextEditingController();
-  var section4 = TextEditingController();
-  var weights = [];
+  var measurements = [];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,17 +25,11 @@ class _Grass_Input extends State<Grass_Input> {
       ),
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          textField(controller: section1, type: 'Grass weight zone 1'),
-          textField(controller: section2, type: 'Grass weight zone 2'),
-          textField(controller: section3, type: 'Grass weight zone 3'),
-          textField(controller: section4, type: 'Grass weight zone 4'),
+          textField(controller: section1, type: 'Enter HT'),
+          textField(controller: section2, type: 'Enter HI'),
+          textField(controller: section3, type: 'Enter R'),
           GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Tree_Input()),
-              );
-            },
+            onTap: () {},
             child: Container(
                 color: kGreen,
                 height: 50,
