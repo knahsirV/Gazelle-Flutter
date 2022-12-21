@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gazelle_flutter/Files.dart';
 import 'package:gazelle_flutter/components/progressbar.dart';
 import 'package:gazelle_flutter/constants.dart';
 
 class Tree_Input extends StatefulWidget {
-  Tree_Input({Key? key});
+  Tree_Input({Key? key, required this.report});
+  Report report;
   @override
-  State<Tree_Input> createState() => _Tree_Input();
+  State<Tree_Input> createState() => _Tree_Input(report: report);
 }
 
 class _Tree_Input extends State<Tree_Input> {
-  _Tree_Input({Key? key});
+  _Tree_Input({Key? key, required this.report});
+  Report report;
   var section1 = TextEditingController();
   var section2 = TextEditingController();
   var section3 = TextEditingController();

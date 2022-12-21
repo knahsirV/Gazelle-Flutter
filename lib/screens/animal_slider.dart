@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gazelle_flutter/components/progressbar.dart';
 import 'package:gazelle_flutter/constants.dart';
-import 'package:gazelle_flutter/screens/tree_input.dart';
+import 'package:gazelle_flutter/components/tree_input.dart';
 
 class Animal_Slider extends StatefulWidget {
   Animal_Slider({Key? key});
@@ -25,10 +25,10 @@ class _Animal_Slider extends State<Animal_Slider> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Tree_Input()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => Tree_Input()),
+              // );
             },
             child: Container(
                 color: kGreen,

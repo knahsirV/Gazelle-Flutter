@@ -1,22 +1,47 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:gazelle_flutter/Files.dart';
 import 'package:gazelle_flutter/components/progressbar.dart';
 import 'package:gazelle_flutter/constants.dart';
-import 'package:gazelle_flutter/screens/tree_input.dart';
+import 'package:gazelle_flutter/components/tree_input.dart';
+
+FileStorage fs = FileStorage();
 
 class Grass_Input extends StatefulWidget {
-  Grass_Input({Key? key});
+  Grass_Input({Key? key, required this.report});
+  Report report;
   @override
-  State<Grass_Input> createState() => _Grass_Input();
+  State<Grass_Input> createState() => _Grass_Input(report: report);
 }
 
 class _Grass_Input extends State<Grass_Input> {
-  _Grass_Input({Key? key});
+  _Grass_Input({Key? key, required this.report});
+  Report report;
   var section1 = TextEditingController();
   var section2 = TextEditingController();
   var section3 = TextEditingController();
   var section4 = TextEditingController();
-  var weights = [];
+  List<dynamic> Grass = <dynamic>[];
+  void initState() {
+    super.initState();
+    setState(() {
+      section1.text = report.gweight[0];
+      section2.text = report.gweight[1];
+      section3.text = report.gweight[2];
+      section4.text = report.gweight[3];
+    });
+  }
+
+  void FileUpdate() async {
+    Grass = [section1.text, section2.text, section3.text, section4.text];
+    setState(() {
+      report.gweight = Grass;
+    });
+
+    await fs.writeFile(report, 'temp');
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,16 +52,37 @@ class _Grass_Input extends State<Grass_Input> {
       ),
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          textField(controller: section1, type: 'Grass weight zone 1'),
-          textField(controller: section2, type: 'Grass weight zone 2'),
-          textField(controller: section3, type: 'Grass weight zone 3'),
-          textField(controller: section4, type: 'Grass weight zone 4'),
+          textField(
+              controller: section1,
+              type: 'Grass weight zone 1',
+              update: () {
+                FileUpdate();
+              }),
+          textField(
+              controller: section2,
+              type: 'Grass weight zone 2',
+              update: () {
+                FileUpdate();
+              }),
+          textField(
+              controller: section3,
+              type: 'Grass weight zone 3',
+              update: () {
+                FileUpdate();
+              }),
+          textField(
+              controller: section4,
+              type: 'Grass weight zone 4',
+              update: () {
+                FileUpdate();
+              }),
           GestureDetector(
             onTap: () {
               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Tree_Input()),
-              );
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Tree_Input(report: report),
+                  ));
             },
             child: Container(
                 color: kGreen,
@@ -55,12 +101,14 @@ class _Grass_Input extends State<Grass_Input> {
 }
 
 class textField extends StatelessWidget {
-  textField({
-    Key? key,
-    required this.controller,
-    required this.type,
-  }) : super(key: key);
+  textField(
+      {Key? key,
+      required this.controller,
+      required this.type,
+      required this.update})
+      : super(key: key);
   TextEditingController controller;
+  void Function() update;
   final String type;
 
   @override
@@ -81,6 +129,7 @@ class textField extends StatelessWidget {
                   child: Padding(
                 padding: const EdgeInsets.only(left: 13),
                 child: TextField(
+                    onChanged: (text) => {update()},
                     keyboardType: TextInputType.number,
                     controller: controller,
                     style: const TextStyle(

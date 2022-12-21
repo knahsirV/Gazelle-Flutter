@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gazelle_flutter/Files.dart';
 import 'package:gazelle_flutter/constants.dart';
-import 'package:gazelle_flutter/screens/grass_input.dart';
+import 'package:gazelle_flutter/components/grass_input.dart';
+import 'package:gazelle_flutter/screens/input_screen.dart';
+import 'package:gazelle_flutter/screens/reports_screen.dart';
 
 class cccBody extends StatefulWidget {
   cccBody({Key? key});
@@ -11,6 +16,7 @@ class cccBody extends StatefulWidget {
 
 class _cccBody extends State<cccBody> {
   _cccBody({Key? key});
+  FileStorage fs = FileStorage();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -33,7 +39,7 @@ class _cccBody extends State<cccBody> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Grass_Input()),
+                MaterialPageRoute(builder: (context) => InputScreen()),
               );
             },
             child: Container(
@@ -62,7 +68,12 @@ class _cccBody extends State<cccBody> {
             )),
         Container(height: 50),
         GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ReportsScreen()),
+              );
+            },
             child: Container(
               height: 150,
               width: 300,
@@ -88,6 +99,10 @@ class _cccBody extends State<cccBody> {
               ),
             )),
         const Spacer(),
+        GestureDetector(
+          onTap: () async {},
+          child: Container(height: 50, width: 50, color: kGreen),
+        ),
         GestureDetector(
           onTap: () {},
           child: SvgPicture.asset(
