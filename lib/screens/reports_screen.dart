@@ -22,7 +22,8 @@ class ReportsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return FutureBuilder(
+    return Scaffold(
+        body: FutureBuilder(
       future: getReports(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
@@ -32,6 +33,6 @@ class ReportsScreen extends StatelessWidget {
         }
         return const CircularProgressIndicator();
       },
-    );
+    ));
   }
 }
